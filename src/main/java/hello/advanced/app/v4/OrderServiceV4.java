@@ -14,13 +14,13 @@ public class OrderServiceV4 {
     private final LogTrace trace;
 
     public void orderItem(String itemId) {
-        AbstractTemplate<Void> template = new AbstractTemplate<Void>(trace) {
-            @Override
-            protected Void call() {
-                orderRepository.save(itemId);
-                return null;
-            }
-        };
+        AbstractTemplate<Void> template = new AbstractTemplate<>(trace) {
+			@Override
+			protected Void call() {
+				orderRepository.save(itemId);
+				return null;
+			}
+		};
         template.execute("OrderService.orderItem");
     }
 
